@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<section class="admin-dashboard">
+    <div class="container">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div class="admin-actions">
+                <a href="{{ url_for('download_members') }}" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Export Members
+                </a>
+                <a href="https://host01bishal.pythonanywhere.com/login" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-wifi"></i> Wi-Fi Portal
+                </a>
+                <a href="{{ url_for('admin_register') }}" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> New Registration
+                </a>
+                <a href="{{ url_for('register_admin') }}" class="btn btn-primary">
+                    <i class="fas fa-user-shield"></i> Register New Admin
+                </a>
+                <a href="{{ url_for('change_password') }}" class="btn btn-primary">
+                    <i class="fas fa-key"></i> Change Password
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1B9Pd95ief68R2_zEbiM6zffwQCxGvJOzP2ksiFN-pks/edit?usp=sharing" class="btn btn-primary">
+                    <i class="fas fa-file-invoice-dollar"></i> Monthly Expenses
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1sH04LwoeWCCMUsyGASmdzcxSKMCjWbrWTMCd-cnpKYU/edit?usp=sharing" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> Meal Sheet
+                </a>
+            </div>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ members|length }}</h3>
+                    <p>Total Members</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ wifi_count }}</h3>
+                    <p>Wi-Fi Subscriptions</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ notices|length }}</h3>
+                    <p>Active Notices</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="admin-content">
+            <div class="admin-main">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Members List</h2>
+                        <div class="search-box">
+                            <input type="text" id="memberSearch" placeholder="Search members...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="members-table">
+                                <thead>
+                                    <tr>
+                                        <th>Member ID</th>
+                                        <th>Name</th>
+                                        <th>Course</th>
+                                        <th>WhatsApp</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for member in members %}
+                                    <tr>
+                                        <td>{{ member.member_id }}</td>
+                                        <td>{{ member.name }}</td>
+                                        <td>{{ member.course }}</td>
+                                        <td>{{ member.whatsapp }}</td>
+                                        <td>
+                                            <a href="{{ url_for('manage_user', member_id=member.member_id) }}" 
+                                               class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i> Manage
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="admin-sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Post Notice</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('add_notice') }}">
+                            <div class="form-group">
+                                <label for="notice_text" class="form-label">Notice Text</label>
+                                <textarea id="notice_text" name="notice_text" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" id="is_public" name="is_public" class="form-check-input" checked>
+                                    <label for="is_public" class="form-check-label">Public Notice</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Post Notice</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recent Notices</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="notices-list">
+                            {% for notice in notices[-5:] %}
+                            <div class="notice-item">
+                                <div class="notice-date">{{ notice.notice_date }}</div>
+                                <div class="notice-text">{{ notice.notice_text }}</div>
+                                <div class="notice-status">
+                                    <span class="badge {{ 'badge-primary' if notice.is_public == 'True' else 'badge-secondary' }}">
+                                        {{ 'Public' if notice.is_public == 'True' else 'Members Only' }}
+                                    </span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Member search functionality
+        const searchInput = document.getElementById('memberSearch');
+        const memberRows = document.querySelectorAll('.members-table tbody tr');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            memberRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}

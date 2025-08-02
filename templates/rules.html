@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules & Regulations - Nilratran Chatrawas</title>
+    <link rel="icon" href="/static/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        .main-header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 0.75rem;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .main-nav a:hover:after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('/static/images/room2.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Rules Section */
+        .rules-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rules-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .rules-list {
+            list-style-type: none;
+        }
+
+        .rule-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .rule-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .rule-penalty {
+            font-size: 0.85rem;
+            color: var(--danger-color);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: var(--shadow-lg);
+                padding: 2rem;
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .rule-item {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="/static/images/logo.png" alt="Nilratran Chatrawas">
+                <div class="logo-text">Nilratran Chatrawas</div>
+            </a>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('rules') }}" class="active">Rules</a></li>
+                    <li><a href="{{ url_for('wifi') }}">Wifi-Connection</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    {% if 'user_id' in session %}
+                        {% if session.is_admin %}
+                            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <!-- <li><a href="{{ url_for('register') }}" class="btn-primary">Register</a></li> -->
+                    {% endif %}
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Rules & Regulations</h1>
+            <p>Guidelines to ensure a peaceful and productive environment for all residents</p>
+        </div>
+    </section>
+    
+    <!-- Rules Section -->
+    <section class="rules-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chatrawas Rules</h2>
+                <p>Please read and follow all rules carefully to maintain harmony in our community</p>
+            </div>
+            
+            <div class="rules-container">
+                <!-- General Rules -->
+                <div class="rules-category fade-in">
+                    <h3 class="category-title">General Rules</h3>
+                    <ul class="rules-list">
+                        <li class="rule-item">
+                            Every student must be pre-registered in the official register book and ensure details are accurate.
+                            <div class="rule-penalty">Failure to do so may result in consequences as decided by the management.</div>
+                        </li>
+                        <li class="rule-item">
+                            Entry after 9:00 PM is not allowed without prior permission. Inform in advance if late return is expected.
+                            <div class="rule-penalty">Repeated disregard may lead to restrictions or disciplinary action.</div>
+                        </li>
+                        <li class="rule-item">
+                            No outsider is allowed without permission. Every entry must be recorded with valid reason in the entry register.
+                            <div class="rule-penalty">Violation may lead to suspension of entry privileges.</div>
+                        </li>
+                        <li class="rule-item">
+                            Maintain a quiet and focused environment at all times. Use headphones during calls, videos, or music.
+                            <div class="rule-penalty">Disturbances may lead to warnings or restrictions.</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Room Rules -->
+                <div class="rules-category fade-in delay-1">
+                    <h3 class="category-title">Room Rules</h3>
+                    <ul class="rules-list">
+                        <li class="rule-item">
+                            Keep your room clean and organized daily. Each student must take responsibility for keeping their own space clean.
+                            <div class="rule-penalty">Neglect may lead to compulsory cleaning duties.</div>
+                        </li>
+                        <li class="rule-item">
+                            Do not move furniture or room items without mutual understanding.
+                            <div class="rule-penalty">Disagreements or issues may lead to intervention by the managing group.</div>
+                        </li>
+                        <li class="rule-item">
+                            Cooking is allowed in the kitchen only when required, with prior discussion to maintain cleanliness and order.
+                            <div class="rule-penalty">Misuse may result in temporary kitchen access restrictions.</div>
+                        </li>
+                        <li class="rule-item">
+                            Weekly outdoor cleaning drives will be held. Participation is compulsory.
+                            <div class="rule-penalty">Non-participation may lead to loss of certain shared privileges.</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Safety Rules -->
+                <div class="rules-category fade-in delay-2">
+                    <h3 class="category-title">Safety & Security</h3>
+                    <ul class="rules-list">
+                        <li class="rule-item">
+                            Smoking, alcohol, and any illegal substances are strictly prohibited within the premises.
+                            <div class="rule-penalty">Violation will result in immediate removal from the premises.</div>
+                        </li>
+                        <li class="rule-item">
+                            Before leaving, check all electrical appliances and gas connections. Do not leave heavy electric items running when not in use.
+                            <div class="rule-penalty">Negligence may lead to loss of device usage privileges.</div>
+                        </li>
+                        <li class="rule-item">
+                            Every student is responsible for reporting unknown entries or unusual activity.
+                            <div class="rule-penalty">Failure to report may be treated as a shared responsibility.</div>
+                        </li>
+                        <li class="rule-item">
+                            Make sure to log any guest’s name and purpose in the entry register.
+                            <div class="rule-penalty">Unauthorized access may result in restrictions on inviting guests.</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Visitor Rules -->
+                <div class="rules-category fade-in delay-3">
+                    <h3 class="category-title">Visitor Policy</h3>
+                    <ul class="rules-list">
+                        <li class="rule-item">
+                            Visitors must write their name, address, contact number, and reason for visit in the entry register.
+                            <div class="rule-penalty">Unrecorded visits may lead to limited visitor permissions.</div>
+                        </li>
+                        <li class="rule-item">
+                            Only common areas can be used for meeting visitors.
+                            <div class="rule-penalty">Violations may affect future visitation allowance.</div>
+                        </li>
+                        <li class="rule-item">
+                            No visitor entry allowed after 7:00 PM.
+                            <div class="rule-penalty">Late visits may be denied entry at the gate.</div>
+                        </li>
+                        <li class="rule-item">
+                            Students must immediately report any misbehavior or issue caused by a visitor.
+                            <div class="rule-penalty">Delays in reporting may result in review of visitor privileges.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Nilratran Chatrawas provides comfortable and affordable accommodation for students pursuing education in nearby colleges.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('rules') }}">Rules & Regulations</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                        <li><a href="{{ url_for('login') }}">Member Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Student Lane, Education City</p>
+                        <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                        <p><i class="fas fa-envelope"></i> info@nilratranchatrawas.com</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {{ now.year }} Nilratran Chatrawas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

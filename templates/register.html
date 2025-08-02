@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Registration - Nilratran Chatrawas</title>
+    <link rel="icon" href="/static/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .register-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background-color: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            min-height: 90vh;
+        }
+
+        .register-left {
+            flex: 1;
+            background: linear-gradient(rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.9)), 
+                        url('https://images.unsplash.com/photo-1582719471386-3b8f564db7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .register-left-content {
+            max-width: 400px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .register-left h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .register-left p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon {
+            background-color: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .register-right {
+            width: 500px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-header {
+            margin-bottom: 2rem;
+        }
+
+        .register-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .register-header p {
+            color: #64748b;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .register-footer {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .register-footer a {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .register-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            
+            .register-left {
+                padding: 2rem;
+                text-align: center;
+            }
+            
+            .register-left-content {
+                max-width: 100%;
+            }
+            
+            .register-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .register-container {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+            
+            .register-right {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-left">
+            <div class="register-left-content">
+                <div class="logo">
+                    <img src="/static/images/logo.png" alt="Nilratran Chatrawas">
+                    <div class="logo-text">Nilratran Chatrawas</div>
+                </div>
+                <h1>Join Our Community</h1>
+                <p>Register now to secure your accommodation with premium facilities and services.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div>Comfortable living spaces</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div>Dedicated study areas</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div>Safe and secure environment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="register-right">
+            <div class="register-header">
+                <h2>New Registration</h2>
+                <p>Fill in all required details to create your account</p>
+            </div>
+            
+            <form method="POST" action="{{ url_for('register') }}">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name*</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp" class="form-label">WhatsApp Number*</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">Address*</label>
+                    <textarea id="address" name="address" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="course" class="form-label">Course Name*</label>
+                        <input type="text" id="course" name="course" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aadhar" class="form-label">Aadhar Number*</label>
+                        <input type="text" id="aadhar" name="aadhar" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pin" class="form-label">Set 4-digit PIN*</label>
+                        <input type="password" id="pin" name="pin" class="form-control" 
+                               pattern="\d{4}" title="Must be 4 digits" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wifi" class="form-label">Wi-Fi Needed?</label>
+                        <select id="wifi" name="wifi" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="Later">Tell Later</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Register Now</button>
+            </form>
+            
+            <div class="register-footer">
+                <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
